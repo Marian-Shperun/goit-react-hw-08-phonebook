@@ -2,9 +2,7 @@ import { useDispatch } from 'react-redux';
 import { removeContact } from 'globalState/slices/constatsSlice';
 
 const ContactList = ({ visibleList }) => {
-  console.log(visibleList);
   const dispatch = useDispatch();
-
   return (
     <ul>
       {visibleList.map(({ id, name, number }) => {

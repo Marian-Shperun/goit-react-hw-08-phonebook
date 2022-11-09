@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'globalState/slices/constatsSlice';
+import { addContact } from 'globalState/operations';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 

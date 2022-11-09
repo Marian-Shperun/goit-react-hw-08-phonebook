@@ -7,7 +7,8 @@ import Filter from './Filter/Filter';
 import ContactList from './ContactList';
 
 export const App = () => {
-  const contacts = Object.values(useSelector(getContacts));
+  // const contacts = Object.values(useSelector(getContacts));
+  const contacts = useSelector(getContacts);
   const filter = useSelector(getFilterStatus);
 
   const filteredContacts = () => {

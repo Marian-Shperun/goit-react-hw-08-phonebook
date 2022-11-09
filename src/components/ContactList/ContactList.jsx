@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { removeContact } from 'globalState/slices/constatsSlice';
+import { deleteContact } from 'globalState/operations';
 
 const ContactList = ({ visibleList }) => {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ const ContactList = ({ visibleList }) => {
             <a href={`tel:${number}`}>
               {name}: <span>{number}</span>
             </a>
-            <button key={id} onClick={() => dispatch(removeContact(id))}>
+            <button key={id} onClick={() => dispatch(deleteContact(id))}>
               Delete
             </button>
           </li>

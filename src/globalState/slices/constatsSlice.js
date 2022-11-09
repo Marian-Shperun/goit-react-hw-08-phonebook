@@ -1,39 +1,52 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { fetchContacts, addContact, deleteContact } from '../operations';
+
+const handlePending = state => {
+  state.isLoading = true;
+};
+
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
 
 const contactsinitialState = {
   contacts: [],
+  isLoading: false,
+  error: null,
 };
 
 export const contactsSlice = createSlice({
-  // 1 робить action (дія)
   name: 'contacts',
   initialState: contactsinitialState,
-  // 2 робить reduser щоб обробляти action
-  reducers: {
-    addContact(state, action) {
+  extraReducers: {
+    [fetchContacts.pending]: handlePending,
+    [fetchContacts.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.contacts = action.payload;
+    },
+    [fetchContacts.rejected]: handleRejected,
+    [addContact.pending]: handlePending,
+    [addContact.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
       state.contacts.push(action.payload);
     },
-    removeContact(state, action) {
+    [addContact.rejected]: handleRejected,
+    [deleteContact.pending]: handlePending,
+    [deleteContact.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
       const index = state.contacts.findIndex(
         contact => contact.id === action.payload
       );
       state.contacts.splice(index, 1);
     },
+    [deleteContact.rejected]: handleRejected,
   },
 });
 
-const persisteConfig = {
-  key: 'contacts',
-  storage,
-};
-
 export const getContacts = state => state.contacts.contacts;
 
-export const { addContact, removeContact } = contactsSlice.actions;
-
-export const contactsReducer = persistReducer(
-  persisteConfig,
-  contactsSlice.reducer
-);
+export const contactsReducer = contactsSlice.reducer;

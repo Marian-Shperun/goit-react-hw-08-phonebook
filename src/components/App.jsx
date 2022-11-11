@@ -2,12 +2,14 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectContacts, selectFilterStatus } from 'globalState/selectors';
 import { fetchContacts } from 'globalState/operations';
+
 import ContactForm from './ContactForm';
 import Filter from './Filter';
 import ContactList from './ContactList';
+import { TextSkeleton } from './Skeleton';
 
 export const App = () => {
-  const contacts = useSelector(selectContacts);
+  const { contacts, isLoading, error } = useSelector(selectContacts);
   const filter = useSelector(selectFilterStatus);
   const dispatch = useDispatch();
 
@@ -26,14 +28,20 @@ export const App = () => {
     <div className="container">
       <h1>Phonebook</h1>
       <ContactForm contacts={contacts} />
-
       <h2>Contacts</h2>
       {contacts.length === 0 ? (
-        <p>No contacts added</p>
+        <>
+          {isLoading ? (
+            <TextSkeleton />
+          ) : (
+            <p>{error ? error : 'No contacts added'}</p>
+          )}
+        </>
       ) : (
         <>
           <Filter title="Find contacts by name" contacts={filteredContacts} />
           <ContactList
+            isLoading={isLoading}
             visibleList={filter !== '' ? filteredContacts() : contacts}
           />
         </>

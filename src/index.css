@@ -87,11 +87,13 @@ a {
   padding: 0 20px;
 }
 
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  select:focus:hover,
-  textarea:focus:hover,
-  input:focus:hover {
-    font-size: 16px;
-    padding: 12px;
+@media screen and (max-width: 600px) {
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    select:focus:hover,
+    textarea:focus:hover,
+    input:focus:hover {
+      font-size: 16px;
+      padding: 12px;
+    }
   }
 }

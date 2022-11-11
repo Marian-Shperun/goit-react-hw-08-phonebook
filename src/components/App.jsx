@@ -1,15 +1,14 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts } from '../globalState/slices/constatsSlice';
-import { getFilterStatus } from '../globalState/slices/filterSlice';
+import { selectContacts, selectFilterStatus } from 'globalState/selectors';
 import { fetchContacts } from 'globalState/operations';
 import ContactForm from './ContactForm';
-import Filter from './Filter/Filter';
+import Filter from './Filter';
 import ContactList from './ContactList';
 
 export const App = () => {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilterStatus);
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilterStatus);
   const dispatch = useDispatch();
 
   useEffect(() => {

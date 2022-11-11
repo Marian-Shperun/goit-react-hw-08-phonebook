@@ -41,17 +41,6 @@ const ContactForm = ({ contacts }) => {
       return false;
     }
   };
-  // const dataForm = {
-  //   name: veluesOfInput.name,
-  //   number: veluesOfInput.number,
-  // };
-
-  // const submitForm = e => {
-  //   e.preventDefault();
-  //   if (onSubmit(dataForm)) {
-  //     e.target.reset();
-  //   }
-  // };
 
   return (
     <form onSubmit={handleSubmit}>

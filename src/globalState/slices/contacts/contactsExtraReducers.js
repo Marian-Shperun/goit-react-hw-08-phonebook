@@ -7,8 +7,9 @@ export const addContactReducer = (state, action) => {
 };
 
 export const deleteContactReducer = (state, action) => {
+
   const index = state.contacts.findIndex(
-    contact => contact.id === action.payload
+    contact => contact.id === action.payload.id
   );
   state.contacts.splice(index, 1);
 };

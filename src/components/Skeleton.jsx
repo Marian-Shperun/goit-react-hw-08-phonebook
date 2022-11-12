@@ -8,27 +8,27 @@ export const ContsctSkeleton = () => {
     <div
       style={{
         width: '100%',
-
       }}
     >
       <Stack spacing={1}>
         <div
           style={{
             display: 'flex',
-            marginTop: '20px',
+            alignItems: 'center',
           }}
         >
+          <Skeleton variant="circular" width={50} height={50} />
           <Skeleton
             variant="rectangular"
-            width="100%"
-            height={30}
-            style={{ borderRadius: 5 }}
+            width="193px"
+            height={20}
+            sx={{ mr: 2, ml: 2, borderRadius: 1 }}
           />
           <Skeleton
             variant="rectangular"
-            width={80}
+            width="60px"
             height={30}
-            style={{ borderRadius: 5 }}
+            sx={{ borderRadius: 1 }}
           />
         </div>
         <div></div>

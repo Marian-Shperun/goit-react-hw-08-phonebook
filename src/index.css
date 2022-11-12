@@ -52,16 +52,26 @@ label:not(:last-child) {
 }
 input {
   width: 100%;
+  margin-top: 5px;
+  padding: 5px 30px;
+  border: none;
+  border-bottom: 1px solid black;
+  border-radius: 5px;
+  outline: inherit;
+}
+
+input:focus ~ span {
+  color: #5a96f7;
+}
+input:focus {
+  border-bottom: 1px solid #5a96f7;
 }
 input[name='filter'] {
   width: 40%;
   padding: 5px;
   border: 1px solid black;
 }
-span {
-  margin-left: auto;
-  margin-right: 20px;
-}
+
 button {
   padding: 10px;
   background-color: inherit;
@@ -92,8 +102,8 @@ a {
     select:focus:hover,
     textarea:focus:hover,
     input:focus:hover {
-      font-size: 16px;
-      padding: 12px;
+      font-size: 20px;
+      padding-left: 30px;
     }
   }
 }

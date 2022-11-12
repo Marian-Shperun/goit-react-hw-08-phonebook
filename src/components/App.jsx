@@ -26,26 +26,34 @@ export const App = () => {
 
   return (
     <div className="container">
-      <h1>Phonebook</h1>
-      <ContactForm contacts={contacts} />
-      <h2>Contacts</h2>
-      {contacts.length === 0 ? (
-        <>
-          {isLoading ? (
-            <TextSkeleton />
-          ) : (
-            <p>{error ? error : 'No contacts added'}</p>
-          )}
-        </>
-      ) : (
-        <>
-          <Filter title="Find contacts by name" contacts={filteredContacts} />
-          <ContactList
-            isLoading={isLoading}
-            visibleList={filter !== '' ? filteredContacts() : contacts}
-          />
-        </>
-      )}
+      <div className="inner">
+        <h1>Phonebook</h1>
+        <ContactForm contacts={contacts} />
+        <h2>Contacts</h2>
+        {contacts.length === 0 ? (
+          <>
+            {isLoading ? (
+              <TextSkeleton />
+            ) : (
+              <>
+                {error ? (
+                  <p style={{ color: 'red' }}>{error}</p>
+                ) : (
+                  <p>No contacts added</p>
+                )}
+              </>
+            )}
+          </>
+        ) : (
+          <>
+            <Filter title="Find contacts by name" contacts={filteredContacts} />
+            <ContactList
+              isLoading={isLoading}
+              visibleList={filter !== '' ? filteredContacts() : contacts}
+            />
+          </>
+        )}
+      </div>
     </div>
   );
 };

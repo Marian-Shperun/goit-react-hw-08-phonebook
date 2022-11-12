@@ -28,7 +28,7 @@ export const ContsctSkeleton = () => {
             variant="rectangular"
             width="60px"
             height={30}
-            sx={{ borderRadius: 1 }}
+            sx={{ borderRadius: 1, ml: 'auto' }}
           />
         </div>
         <div></div>

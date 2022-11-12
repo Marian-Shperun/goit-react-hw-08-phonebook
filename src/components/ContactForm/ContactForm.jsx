@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { addContact } from 'globalState/operations';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import PersonIcon from '@mui/icons-material/Person';
 
 const ContactForm = ({ contacts }) => {
   const [valuesOfInput, setValuesOfInput] = useState({
@@ -56,6 +58,9 @@ const ContactForm = ({ contacts }) => {
           id={idName}
           onChange={handleChange}
         />
+        <span style={{ position: 'relative', top: '-26px', left: '5px' }}>
+          <PersonIcon sx={{ mr: 1, fontSize: 18 }} />
+        </span>
       </label>
       <label htmlFor={idNumber}>
         Number
@@ -70,6 +75,9 @@ const ContactForm = ({ contacts }) => {
           onChange={handleChange}
           required
         />
+        <span style={{ position: 'relative', top: '-26px', left: '5px' }}>
+          <LocalPhoneIcon sx={{ mr: 1, fontSize: 18 }} />
+        </span>
       </label>
       <button type="submit">Add const</button>
     </form>

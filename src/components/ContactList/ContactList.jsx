@@ -6,7 +6,9 @@ console.log(AccountCircleIcon);
 const ContactList = ({ visibleList, isLoading }) => {
   const dispatch = useDispatch();
   return (
-    <ul>
+    <ul
+      className='contactsList'
+    >
       {visibleList.map(({ id, name, number }) =>
         isLoading ? (
           <div key={id}>
@@ -14,13 +16,19 @@ const ContactList = ({ visibleList, isLoading }) => {
           </div>
         ) : (
           <li key={id}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
+            <div
+              style={{
+                width: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                paddingRight: '10px',
+              }}
+            >
               <span style={{ fontSize: '30px' }}>
                 <AccountCircleIcon sx={{ mr: 1, fontSize: 60 }} size="large" />
               </span>
-              <a href={`tel:${number}`}>
-                {name}: <span style={{ marginLeft: '10px' }}>{number}</span>
-              </a>
+              <a href={`tel:${number}`} style={{maxWidth: '80px'}}>{name}:</a>
+              <span style={{ marginLeft: '10px' }}>{number}</span>
             </div>
             <button type="button" onClick={() => dispatch(deleteContact(id))}>
               Delete

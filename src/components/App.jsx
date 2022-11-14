@@ -27,7 +27,7 @@ export const App = () => {
   return (
     <div className="container">
       <div className="inner">
-        <h1>Phonebook</h1>
+        <h1 style={{marginTop: 0}}>Phonebook</h1>
         <ContactForm contacts={contacts} />
         <h2>Contacts</h2>
         {contacts.length === 0 ? (

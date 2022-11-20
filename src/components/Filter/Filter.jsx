@@ -1,10 +1,12 @@
 import { useDispatch } from 'react-redux';
 
-import { setStatusFilter } from 'globalState/slices/filterSlice';
-import PropTypes from 'prop-types';
-import PersonSearchIcon from '@mui/icons-material/PersonSearch';
+import { setStatusFilter } from 'globalState/contacts/filterSlice';
 
-const Filter = ({ title, contacts }) => {
+import PropTypes from 'prop-types';
+import { PersonSearchIcon } from '../IconsApp';
+import { IconFilter } from './Filter.styled';
+
+const Filter = ({ contacts, scroll }) => {
   const dispatch = useDispatch();
 
   const handleChange = e => {
@@ -13,29 +15,30 @@ const Filter = ({ title, contacts }) => {
   };
   return (
     <>
-      {title && <h3>{title}</h3>}
-      <div>
+      <div
+        style={{
+          position: 'relative',
+        }}
+      >
         <input
-          style={{
-            position: 'absolute',
-            paddingLeft: '25px',
-          }}
           type="text"
           name="filter"
-          placeholder="Find a contact"
+          placeholder="Find contacts by name"
           onChange={handleChange}
         />
-        <span style={{ position: 'relative', top: '10px', left: '5px' }}>
+        <IconFilter scroll={scroll}>
           <PersonSearchIcon sx={{ mr: 1, fontSize: 18 }} />
-        </span>
+        </IconFilter>
       </div>
-      {contacts().length === 0 && <p>not found</p>}
+      {contacts().length === 0 && (
+        <b style={{ display: 'block', marginTop: '15px' }}>Not found</b>
+      )}
     </>
   );
 };
 export default Filter;
 
 Filter.propTypes = {
-  title: PropTypes.string.isRequired,
   contacts: PropTypes.func.isRequired,
+  scroll: PropTypes.number,
 };

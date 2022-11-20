@@ -1,8 +1,10 @@
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'globalState/operations';
+import { deleteContact } from 'globalState/contacts/operations';
+
 import { ContsctSkeleton } from '../Skeleton';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-console.log(AccountCircleIcon);
+import { AccountCircleIcon } from '../IconsApp';
+import css from './ContactList.module.css';
+
 const ContactList = ({ visibleList, isLoading }) => {
   const dispatch = useDispatch();
   return (
@@ -14,20 +16,12 @@ const ContactList = ({ visibleList, isLoading }) => {
           </div>
         ) : (
           <li key={id}>
-            <a
-              href={`tel:${number}`}
-              style={{
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                paddingRight: '10px',
-              }}
-            >
+            <a href={`tel:${number}`} className={css['contacts-list__link']}>
               <span style={{ fontSize: '30px' }}>
                 <AccountCircleIcon sx={{ mr: 1, fontSize: 60 }} size="large" />
               </span>
-              <p style={{ maxWidth: '80px' }}>{name}:</p>
-              <span style={{ marginLeft: '10px' }}>{number}</span>
+              <p style={{ width: '90px', marginRight: 'auto' }}>{name}:</p>
+              <span className={css['contacts-list__number']}>{number}</span>
             </a>
             <button type="button" onClick={() => dispatch(deleteContact(id))}>
               Delete

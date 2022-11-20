@@ -1,0 +1,36 @@
+.name-user {
+  display: contents;
+  padding: 5px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 30px;
+  right: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 5;
+}
+.dropdown-menu__email {
+  margin: 0;
+  padding-bottom: 5px;
+}
+
+.botton-exit {
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+}
+.botton-exit svg {
+  transition: all 250ms linear;
+}
+.name-user:hover,
+.name-user:active,
+.botton-exit:hover svg,
+.botton-exit:active svg {
+  transform: scale(1.2);
+  color: #5a96f7;
+  cursor: pointer;
+  transition: all 250ms linear;
+}

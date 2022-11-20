@@ -1,13 +1,13 @@
 @import-normalize; /* bring in normalize.css styles */
 
 body {
-  overflow: hidden;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
 
 code {
@@ -17,28 +17,11 @@ code {
 * {
   box-sizing: border-box;
 }
-form {
-  padding: 10px;
-  border: 1px solid rgb(2, 2, 2);
-}
 
 ul {
   list-style: circle;
   padding: 0;
-  margin-bottom: 0;
-  padding-right: 10px;
-}
-
-ul::-webkit-scrollbar {
-  width: 3px;
-  height: 15px;
-  /* border-radius: 10px; */
-  background-color: rgb(244, 243, 243); /* колір зони відстеження */
-}
-
-ul::-webkit-scrollbar-thumb {
-  background: rgb(165, 165, 166); /* колір бігунка */
-  /* border-radius: 10px; Округлилося бігунка */
+  margin: 0;
 }
 
 li {
@@ -46,29 +29,35 @@ li {
   align-items: center;
   width: 100%;
 }
+
+li:not(:last-child) {
+  margin-bottom: 10px;
+}
+
 a {
   display: flex;
   flex: 1;
 }
-li:not(:last-child) {
-  margin-bottom: 15px;
-}
+
 label:not(:last-child) {
   display: block;
   margin-bottom: 10px;
 }
+
 input {
   width: 100%;
   margin-top: 5px;
-  padding: 5px 30px;
+  padding: 5px 10px 5px 30px !important;
   border: none;
   border-bottom: 1px solid black;
   border-radius: 5px;
   outline: inherit;
 }
+
 span,
 input {
   transition: all 250ms ease-in-out;
+  background-color: transparent;
 }
 input:focus ~ span {
   color: #5a96f7;
@@ -83,6 +72,17 @@ input[name='filter'] {
   padding: 5px;
   border: 1px solid black;
 }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: 0 0 0px 1000px inherit inset;
+  -webkit-text-fill-color: inherit;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+}
 
 button {
   padding: 10px;
@@ -90,14 +90,19 @@ button {
   color: inherit;
   border: 1px solid rgba(0, 0, 0, 0.165);
   margin-left: auto;
+  margin-right: 5px;
   box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 3px 0 rgb(0 0 0 / 14%),
     0 1px 3px 0 rgb(0 0 0 / 12%);
-  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
 }
+
+button:hover,
 button:active {
   background-color: #5a96f7;
   color: white;
   box-shadow: none;
+  transition: all 250ms ease-in-out;
 }
 a {
   text-decoration: none;
@@ -106,41 +111,36 @@ a {
 
 .container {
   width: 100%;
+  height: 100vh;
   padding: 0 10px;
+  overflow-y: scroll;
+}
+
+.container::-webkit-scrollbar {
+  width: 3px;
+  height: 15px;
+  background-color: rgb(244, 243, 243);
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: rgb(165, 165, 166);
 }
 .inner {
   width: 60%;
   margin: 0 auto;
 }
 
-.contactsList {
-  height: 280px;
-  overflow-y: scroll;
-  margin-top: 30px;
-}
-/* .sticky {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  padding-bottom: 20px;
-  background-color: rgb(255, 255, 255);
-} */
-
-@media screen and (min-width: 768px) and (max-width: 1025px) {
-  .contactsList {
-    height: 66vh;
-  }
-}
-
 @media screen and (max-width: 769px) {
   .inner {
     width: 100%;
   }
-  .contactsList {
-    position: absolute;
-    right: 0;
-    width: 100%;
-    height: 34vh;
+
+  input[name='filter'] {
+    width: 70%;
+  }
+  img {
+    object-fit: cover;
+    object-position: top;
   }
 
   @media (-webkit-min-device-pixel-ratio: 0) {
@@ -150,6 +150,17 @@ a {
       font-size: 20px;
       padding-left: 30px;
       transition: all 250ms ease-in-out;
+    }
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      transition: background-color 5000s ease-in-out 0s;
+      box-shadow: 0 0 0px 1000px inherit inset;
+      -webkit-text-fill-color: inherit;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.25;
     }
   }
 }

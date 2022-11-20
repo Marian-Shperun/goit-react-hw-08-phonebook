@@ -1,0 +1,26 @@
+.contacts-list__link {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 10px;
+  transition: all 250ms linear;
+}
+.contacts-list__link:hover {
+  text-decoration: revert;
+  padding-left: 20px;
+  transform: scale(1.05);
+  z-index: 1;
+}
+.contacts-list__number {
+  width: 90%;
+  text-align: center;
+}
+@media screen and (max-width: 569px) {
+  .contacts-list__link:hover {
+    padding-left: 0px;
+  }
+  .contacts-list__number {
+    text-align: end;
+  }
+}

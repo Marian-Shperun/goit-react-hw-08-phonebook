@@ -11,6 +11,18 @@ export const ImgFon = styled.img`
   opacity: ${prop => (prop.isLoggedIn ? 0.2 : 1)};
   z-index: -1;
 `;
+export const TextWelcome = styled.h1`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  z-index: -1;
+`;
 export const Sticky = styled.div`
   position: -webkit-sticky;
   position: sticky;
@@ -35,8 +47,30 @@ export const BtnAddsContact = styled(NavLink)`
     transform: scale(1.3);
     background-color: rgba(17, 246, 36, 0.52);
   }
-
+  & .btn-text {
+    display: none;
+    margin-left: 10px;
+    @media screen and (max-width: 769px) {
+      display: block;
+    }
+  }
   & span {
     color: green;
+  }
+  @media screen and (max-width: 769px) {
+    bottom: 0;
+    right: 0;
+    left: 0;
+    align-items: center;
+    backdrop-filter: blur(14px);
+    border-radius: 0;
+    z-index: 5;
+  }
+`;
+export const TotalCounts = styled(NavLink)`
+  display: block;
+  text-align: center;
+  @media screen and (max-width: 769px) {
+    padding-bottom: 55px;
   }
 `;

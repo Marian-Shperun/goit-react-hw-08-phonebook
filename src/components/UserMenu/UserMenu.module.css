@@ -1,19 +1,25 @@
 .name-user {
-  display: contents;
+  display: flex;
+  align-items: center;
+  font-size: inherit;
+  margin-right: 0;
   padding: 5px;
+  box-shadow: none;
+  border: none;
+  border-radius: 5px;
 }
 
 .dropdown-menu {
   position: absolute;
-  top: 30px;
+  bottom: -30px;
   right: 0px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  z-index: 5;
+  z-index: 6;
 }
 .dropdown-menu__email {
-  margin: 0;
+  margin: 15px 0 0 0;
   padding-bottom: 5px;
 }
 
@@ -25,8 +31,7 @@
 .botton-exit svg {
   transition: all 250ms linear;
 }
-.name-user:hover,
-.name-user:active,
+
 .botton-exit:hover svg,
 .botton-exit:active svg {
   transform: scale(1.2);

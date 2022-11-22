@@ -16,13 +16,18 @@ const ContactList = ({ visibleList, isLoading }) => {
           </div>
         ) : (
           <li key={id}>
-            <a href={`tel:${number}`} className={css['contacts-list__link']}>
+            <div className={css['contacts-list__item']}>
               <span style={{ fontSize: '30px' }}>
                 <AccountCircleIcon sx={{ mr: 1, fontSize: 60 }} size="large" />
               </span>
               <p style={{ width: '90px', marginRight: 'auto' }}>{name}:</p>
-              <span className={css['contacts-list__number']}>{number}</span>
-            </a>
+              <a
+                href={`tel:${number}`}
+                className={css['contacts-list__number']}
+              >
+                {number}
+              </a>
+            </div>
             <button type="button" onClick={() => dispatch(deleteContact(id))}>
               Delete
             </button>

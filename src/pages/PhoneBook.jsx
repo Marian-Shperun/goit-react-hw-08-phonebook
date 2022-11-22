@@ -11,7 +11,12 @@ import ContactList from 'components/ContactList';
 import { TextSkeleton } from 'components/Skeleton';
 
 import { PersonAddIcon } from 'components/IconsApp';
-import { Sticky, BtnAddsContact } from './Pages.styled';
+import {
+  TextWelcome,
+  Sticky,
+  BtnAddsContact,
+  TotalCounts,
+} from './Pages.styled';
 
 const PhoneBook = ({ contacts, isLoading, error, scroll }) => {
   const { isLoggedIn, user } = useAuth();
@@ -32,7 +37,11 @@ const PhoneBook = ({ contacts, isLoading, error, scroll }) => {
   };
   return (
     <>
-      {isLoggedIn && (
+      {!isLoggedIn ? (
+        <TextWelcome style={{ textAlign: 'center', color: 'white' }}>
+          Welcome you in the phonebook, for your contacts!
+        </TextWelcome>
+      ) : (
         <>
           {contacts.length === 0 ? (
             <>
@@ -46,7 +55,7 @@ const PhoneBook = ({ contacts, isLoading, error, scroll }) => {
                   ) : (
                     <p>
                       Hello {user.name}. Contact list is empty to add contact
-                        Pressing on the button at the bottom
+                      Pressing on the button at the bottom
                     </p>
                   )}
                 </>
@@ -62,12 +71,16 @@ const PhoneBook = ({ contacts, isLoading, error, scroll }) => {
                 isLoading={isLoading}
                 visibleList={filter !== '' ? filteredContacts() : contacts}
               />
+              {contacts.length > 0 && (
+                <TotalCounts>{contacts.length} Contacts recorded</TotalCounts>
+              )}
             </>
           )}
           <BtnAddsContact to="/new-contact" title="add new contact">
             <span>
               <PersonAddIcon />
             </span>
+            <span className="btn-text">Add new contact</span>
           </BtnAddsContact>
         </>
       )}

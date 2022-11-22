@@ -53,7 +53,7 @@ const FormAuth = ({ formRegister }) => {
       return true;
     }
   }
-  
+
   return (
     <FormAuthent className="form" onSubmit={handleSubmitFornAuth}>
       {formRegister && (

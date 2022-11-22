@@ -7,8 +7,8 @@ import { selectContacts } from 'globalState/contacts/selectors';
 import { refreshUser } from 'globalState/auth/operations';
 
 import { Layout } from './Layout';
-// import RestrictedRoute from './RestrictedRoute';
-// import PriveteRoute from './PriveteRoute';
+import RestrictedRoute from './RestrictedRoute';
+import PriveteRoute from './PriveteRoute';
 import phone from '../images/phone.jpg';
 import { ImgFon } from 'pages/Pages.styled';
 
@@ -47,29 +47,44 @@ export const App = () => {
             setScroll(e.currentTarget.scrollTop);
           }}
         >
-          <div className="inner">
-            <Routes>
-              <Route path="/" element={<Layout />}>
-                <Route
-                  index
-                  element={
-                    <PhoneBook
-                      contacts={contacts}
-                      isLoading={isLoading}
-                      error={error}
-                      scroll={scroll}
-                    />
-                  }
-                />
-                <Route path="/login" element={<SignIn />} />
-                <Route path="/register" element={<SignUp />} />
-                <Route
-                  path="/new-contact"
-                  element={<FormContact contacts={contacts} />}
-                />
-              </Route>
-            </Routes>
-          </div>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route
+                index
+                element={
+                  <PhoneBook
+                    contacts={contacts}
+                    isLoading={isLoading}
+                    error={error}
+                    scroll={scroll}
+                  />
+                }
+              />
+              <Route
+                path="/login"
+                element={<RestrictedRoute component={SignIn} redirectTo="/" />}
+              />
+              <Route
+                path="/register"
+                element={<RestrictedRoute component={SignUp} redirectTo="/" />}
+              />
+              <Route
+                path="/new-contact"
+                element={
+                  <PriveteRoute
+                    component={<FormContact contacts={contacts} />}
+                    redirectTo="/login"
+                  />
+                }
+              />
+              <Route
+                path="*"
+                element={
+                  <p style={{ color: 'red' }}>The page is not found: 404!</p>
+                }
+              />
+            </Route>
+          </Routes>
         </div>
       )}
     </>

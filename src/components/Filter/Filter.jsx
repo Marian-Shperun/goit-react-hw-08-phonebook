@@ -18,6 +18,7 @@ const Filter = ({ contacts, scroll }) => {
       <div
         style={{
           position: 'relative',
+          marginBottom: '10px',
         }}
       >
         <input

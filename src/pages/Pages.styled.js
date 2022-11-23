@@ -23,16 +23,16 @@ export const TextWelcome = styled.h1`
   font-style: italic;
   z-index: -1;
 `;
-export const Sticky = styled.div`
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  text-align: ${prop => (prop.scroll >= 100 ? 'center' : 'none')};
-  padding-bottom: ${prop => (prop.scroll >= 100 ? '5px' : '20px')};
-  margin-bottom: 0;
-  backdrop-filter: ${prop => (prop.scroll >= 100 ? 'blur(15px)' : 'none')};
-  z-index: 5;
-`;
+// export const Sticky = styled.div`
+//   position: -webkit-sticky;
+//   position: sticky;
+//   top: 0;
+//   text-align: ${prop => (prop.scroll >= 100 ? 'center' : 'none')};
+//   padding-bottom: ${prop => (prop.scroll >= 100 ? '5px' : '20px')};
+//   margin-bottom: 0;
+//   backdrop-filter: ${prop => (prop.scroll >= 100 ? 'blur(15px)' : 'none')};
+//   z-index: 5;
+// `;
 export const BtnAddsContact = styled(NavLink)`
   position: fixed;
   bottom: 20px;
@@ -52,6 +52,10 @@ export const BtnAddsContact = styled(NavLink)`
     margin-left: 10px;
     @media screen and (max-width: 769px) {
       display: block;
+      &:hover,
+      &:active {
+        padding-left: 50px;
+      }
     }
   }
   & span {

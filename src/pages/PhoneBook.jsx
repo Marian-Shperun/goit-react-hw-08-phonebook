@@ -63,10 +63,14 @@ const PhoneBook = ({ contacts, isLoading, error, scroll }) => {
             </>
           ) : (
             <>
-              <Sticky scroll={scroll}>
+              {/* <Sticky scroll={scroll}>
                 <h2>Contacts</h2>
                 <Filter contacts={filteredContacts} scroll={scroll} />
-              </Sticky>
+              </Sticky> */}
+              <>
+                <h2 style={{ marginTop: 0 }}>Contacts</h2>
+                <Filter contacts={filteredContacts} scroll={scroll} />
+              </>
               <ContactList
                 isLoading={isLoading}
                 visibleList={filter !== '' ? filteredContacts() : contacts}

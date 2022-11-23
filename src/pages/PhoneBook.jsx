@@ -13,7 +13,7 @@ import { TextSkeleton } from 'components/Skeleton';
 import { PersonAddIcon } from 'components/IconsApp';
 import {
   TextWelcome,
-  Sticky,
+  // Sticky,
   BtnAddsContact,
   TotalCounts,
 } from './Pages.styled';
